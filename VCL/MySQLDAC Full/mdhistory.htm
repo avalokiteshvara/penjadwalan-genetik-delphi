@@ -1,0 +1,694 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Dac4MySQL history</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<LINK href="/_t/_css/ie.css" type=text/css rel=stylesheet>
+<META content=english name=Content-Language>
+<META 
+content="microOLAP series of programs and components for non-BDE/ODBC database connectivity and administering. For MySQL, Sybase, MS SQL,PostgreSQL programmers and admins." 
+name=description>
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Expires content="Mon, 06 Jan 1990 00:00:01 GMT">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY style="FONT-FAMILY: 'courier new'" bgColor=#ffffff topMargin=4 
+rightMargin=0 marginheight="4" marginwidth="0">
+<H5><U>History of changes in DAC4MySQL</U></H5>
+<BR>
+<B><U>Legend:</U></B> 
+<BR>
+<BR>
+<B>[!] Important</B>
+<BR>
+<B>[+] Feature added</B>
+<BR>
+<B>[*] Improved/changed feature</B>
+<BR>
+<B>[-] Bug fixed</B>
+<BR>
+<BR>
+
+<PRE>
+
+Version 2.4.0 build 9911 (November 28, 2005)
+*********************************************
+
+[+] Long-awaited client-side sorting added (TmySQLDataSet.SortBy() method and
+    TmySQLDataSet.SortFieldNames property).
+[+] New MySQL direct access core with stored procedures support.
+[-] Fixed memory leak while using TmySQLTable.Filtered with TmySQLTable.IndexName
+[-] GotoKey and GotoNearest bugs fixed.
+[-] Fixed memory leak while adding rows to table with BLOB field(s).
+[-] Fixed error raised when converting empty string to boolean. Now empty strings
+    are treated as FALSE.
+
+
+Version 2.3.3 build 9870 (July 4, 2005)
+*********************************************
+[*] Fixed problem with multiple cursor Creating/Closing.
+
+Version 2.3.2 build 9864 (May 30, 2005)
+*********************************************
+[+] Added support for new data type which was introduced in MySQL 5.x, New Decimal.
+[*] Fixed the problems with Unsigned Autoinc field type.
+
+
+Version 2.3.1 build 9824 (February 28, 2005)
+*********************************************
+[+] Support for Delphi 2005 Win 32 Edition has been added!
+[+] Added the ability to get Last Insert ID from the requests that do not return the cursor.
+[*] Fixed the problems with TMySQLDump component that appeared during processing the structure
+    and the data of empty tables.
+[*] Fixed the bug with the server charset detection.
+[*] Fixed the problem with the SQL Parser (incorrect processing of "#" symbol in query).
+[*] GetTableNames method of TmYSQLDatabase component is changed: added the new parameter
+    Views : Boolean = False. If a developer sets this parameter to True, the component returns
+    the list of tables and views.
+[*] Fixed the error that leads to a wrong positioning of the cursor after updating a record with 
+    the trailing space.
+[+] Added optional TMySSHDatabase component, which uses the wodSSHTunnel ActiveX 
+    component from WeOnlyDo! Software (http://www.weonlydo.com). 
+    Before installing TMySSHDatabase you should download the trial version of wodSSHTunnel or 
+    purchase a registered copy at http://www.weonlydo.com/index.asp?showform=SSHTunnel.
+    Note: TMySSHDatabase component should be installed separatelly (read install_ssh.txt file fro details). 
+
+
+Version 2.3.0 build 9715 (September 27, 2004)
+*********************************************
+
+[!] SSL support added. Two new properties added to the TMySQLDatabase component:
+    SSLCert property - type string, contains path to the SSL Certificate file.
+    SSLKey property -  type string, contains path to the SSL Private Key file.
+    Note: MySQL must be compiled with SSL support (1), and a user with SSL
+    using rights must be created. See MySQL documentation.
+
+[*] TMySQLDatabase.ConnectOptions property changed.
+[*] MySQLTools component is completely rewritten.
+[*] TMySQLMonitor component is completely rewritten.
+[*] Event handler parameters in the TMYSQLMonitor component are changed.
+[+] New GetFieldNames method added to the TMySQLDatabase component.
+[+] New event ConnectionFailure added to the TMySQLDatabase component.
+[+] New Shutdown method added to the TMySQLDatabase component.
+[+] Added automatic checking of the MYSQL versions for using of corresponding
+    password processing.
+[+] Added new OnBeforeStatement event to the TMySQLBatch component.
+[+] Added new OnAfterStatement event to the TMySQLBatch component.
+[+] Added new RewriteFile property to the TMySQLDump component.
+[+] Added new IncludeHeader property to the TMySQLDump component.
+[+] Completely rewritten and optimized the procedure of the creating the list of
+    the indexes descriptions of the query to be opened.
+[+] Procedures of the opening of tables with set index in design-time optimized.
+[+] Added possibility to use VIEW in the TableName property of the TMySQLTable
+    component. In design-time TableName property editor also displays views
+    (MySQL 5.0.1).
+[+] GetTableNames method of the TMySQLDatabase component now returns tables and
+    views (MySQL 5.0.1).
+[-] Fixed bug in the Compressed protocol support.
+[-] Fixed bug in processing of the last boolean field in a record. Bug occured
+    on creating INSERT query (incorrect SQL syntax).
+[-] Fixed bug in the filtering by Integer fields (filter IntField > 0 also
+    returned NULL fields).
+[-] Fixed bug in filtering in IS NULL and IS NOT NULL operators.
+[-] Fixed bug in the SetRangе method.
+[-] Fixed bug in the Gotonearest method.
+[-] Fixed bug in the counting of SET fields length.
+[-] Fixed bug on opening VIEW (MySQL 5.0.1).
+
+Version 2.2.4 build 9634 (March 29, 2004)
+*****************************************
+
+[*] NOT NULL fields processing in the GetNativeDesc method of the TNativeDataSet
+    object modified.
+[*] The InternalGetDefault method of the TNativeDataSet object modified to obtain
+    correct default value.
+[-] Fixed bug in the PatchQuery inline function (deleting of the /*![version] */
+    special comment).
+[-] Fixed bug in the GetUpdateSQL method of the TmySQLDataSet object on executing
+    queries with WHERE directive (adding of the WHERE directive without parameters).
+[-] Fixed bug in the TmySQLTable object occured on multiple openings/closings of a
+    table placed on a separate form, when the form has the Form.Destroy Action=caHide;
+[-] Fixed bug: Memory Leak on the operations with a filter.
+[-] Fixed bug in the SQL parser occured on nested functions processing.
+
+
+Version 2.2.3 build 9521 (Febrary 17, 2004)
+*******************************************
+[-] Fixed bug in the CompareBookmark method.
+[-] Fixed bug in the FindNearest method ("8705 At end of table" error).
+[-] Fixed error occured on field modifications for CHAR or VARCHAR field types.
+[-] Fixed bug in the QueryChanged method. If TMySQLQuery.SQL property contained text:
+    "select * from table
+    /*field1 = :param */
+    order by field2",
+    the commented Param parameter was still included into the Params property.
+    This error occured due to the incorrect work of the standard Delphi query
+    parser.
+[-] Fixed bug in TNativeDataSet. The InternalGetDefault method (MySQLAccess unit) now returns 
+    the correct default value for field definitions like `f1` varchar(50) NOT NULL DEFAULT ''.
+[+] Some units renamed to avoid conflicts with products of other vendors.
+
+
+Version 2.2.2 build 9485 (January 14, 2004)
+*******************************************
+[-] Fixed memory leak in TMySQLDataSet.ReadBinarySQL method.
+[-] Fixed bug in GotoCurrent method.
+[-] Fixed bug in FindNearest method using field of DATE type.
+[-] Fixed bug in TMySQLQuery component while POST operation on records
+    containing fields of TIME type.
+[-] Fixed bug in ApplyRange method on fields of Date, Time, DateTime, and
+    TimeStamp types.
+[+] TMySQLDatabase.Multithreaded property added.
+
+Version 2.2.0 build 9401 (December 10, 2003)
+*******************************************
+[*] TMySQLDump component: performance optimization while ExtendedInsert
+    property is set in TRUE.
+[*] TMySQLDatabase component: 2 new flags added to ConnectOptions property
+    (coInteractive and coSSL). Please see these flags description in MySQL
+    documentation.
+[+] New properties in TMySQLDump component added:
+    - AddLock: adding locks around insert statements;
+    - DisableKey: /*!40000 ALTER TABLE tb_name DISABLE KEYS */ and
+      /*!40000 ALTER TABLE tb_name ENABLE KEYS */ will be put in the output.
+[+] Added support of default field values on a query open.
+[+] Added new MySQL version 4.1 passwords encryption mechanism support.
+[-] Fixed bug in uMySQLClient causing AV.
+[-] Fixed bug in TMySQLBatchExecute component in multiline SQL statements parsing.
+[-] Fixed bug in DATE and TIME fields processing.
+
+
+Version 2.1.9 build 9301 (November 27, 2003)
+*******************************************
+[+] Added support for earlier MySQL servers versions (3.23.06 and earlier).
+[-] Fixed bug occurred while counting offsets for the SET type fields
+    (no trush symbols are displayed any more). 
+[-] Fixed and partially rewriten TMySQLBatchExecute.
+[-] Fixed bug occurred while attempting to connect to an unexisting database
+    (blank error message was shown).
+[-] Fixed cursor positioning bug, which occurred after the INSERT, UPDATE and
+    DELETE operations in queries sorted by a string field that is not a
+    primary key.
+
+Version 2.1.8 build 9278 (November 20, 2003)
+*******************************************
+[-] Fixed error which occurred while Date, Time, Datetime parameters
+    processing in paramitrized queries.
+[-] Fixed bug which occurred while getting full table name in
+    "select * from database.tablename" queries.
+[-] Fixed bug while setting internal isQuery flag (after table closing this
+    flag was not dropped).
+[-] Fixed Cursor positioning bug after INSERT, UPDATE and DELETE operations
+    in queries which use "ORDER BY" statement at non-primary keys columns. 
+
+Version 2.1.7 build 9263 (November 12, 2003)
+*******************************************
+[-] Fixed bug on executing query to table without Primary Key or Unique Index.
+
+
+Version 2.1.6 build 9257 (November 10, 2003)
+*******************************************
+[*] Now fields which have MySQL type TIMESTAMP and NOT NULL attribute don't require
+    value input. 
+[-] Fixed cursor positioning bug in TMySQLQuery after INSERT, DELETE and UPDATE.
+[-] Some minor bugs fixed.
+
+
+Version 2.1.5 build 9131 (October 20, 2003)
+*******************************************
+[!] We have drawn back to the v2.0.6 mechanism of modification, deletion
+    and positioning cursor after these operations. This was done mostly
+    because of the MySQL server errors.
+
+
+Version 2.1.4 build 9063 (October 17, 2003)
+*******************************************
+[-] Fixed bug in some SET type fields processing.
+[-] Fixed bug in some TIMESTAMP type fields processing.
+[-] Fixed bug in the TNativeDataset.GetRecordSize method. Now RecordSize is counted correctly.
+[-] Fixed bug in the TNativeDataset.FieldOffset method. Now FieldOffset is counted correctly.
+[-] Fixed bug in some queries implementing tables joining.
+[-] Fixed bug sometimes caused weird symbols appearing in the string fields.
+[-] Fixed bug, which caused incorrect displaying of the negative integer fields values.
+[-] Fixed bug in the processing of the ENUM fields, represented as BOOLEAN.
+
+
+
+Version 2.1.2 build 9019 (October 12, 2003)
+*******************************************
+
+[!] We've made a workaround of problems caused by the MySQL server
+    possibility of inserting NULL values to NOT NULL fields in MySQL
+    table. This might be a reason of many errors with updating/deleting
+    records, which are not supposed to occur anymore. Special thanks
+    to dr. Barry Clark, who helped us a lot with finding the reason
+    of these problems: "MySQL just goes ahead and updates the fields.
+    It does NOT return an error."
+
+Version 2.1.1 build 8913 (October 07, 2003)
+*******************************************
+
+[+] OnProcess event added to TMySQLBatchExecute component. It fires immediately
+    after each SQL Statement executing.
+[-] Some minor bugs were fixed.
+
+
+Version 2.1.0 build 8745 (October 06, 2003)
+*******************************************
+
+[-] Fixed filtered resultset RecordCount obtaining bug.
+[-] Fixed bug when data are displayed in the DBLookupComboBox component.
+[-] Fixed cursor positioning bug in the DBGrid after INSERT and UPDATE operations. 
+[-] Fixed bug in the GetLastInsertID method.
+[-] Fixed simple query (select * from table) bug. Now such queries are opened
+    previously sorted by PrimaryKey or Unique Index.
+[-] Fixed bug in the dynamic creating, opening, and deleting TMySQLTable and
+    TMySQLQuery objects.
+[-] Fixed bug in the TMySQLDump component. Now MySQL single-line comments are
+    processed correctly.
+[-] Fixed bug in the TMySQLDump BCB version after an object is created dynamically,
+    but it was impossible to change such object's properties values in run-time.
+
+
+Version 2.0.6 build 8421 (August 12, 2003)
+*******************************************
+
+[+] Added: processing for field types FIELD_TYPE_NULL for queries like
+    'select null as test, 1 as something from "sometable"'.
+[+] Added {$T-} compiler directvie to uMySQLNet.pas, uMySQLClient.pas,
+    MySQLAccess, and MySQLTypes units.
+[+] Added: Now each of TMYSQLDatabase components has its own connection to avoid
+    'Duplicate Database Name' error. 
+    Property HandleShared kept for compatibility only and has no any functionality.
+[-] Fixed "Integer Overflow" error in HashPassword function when Check Overflow (Q)
+    in project options is set ON.
+[-] Fixed error in SQLTimeStamptoDataTime function.
+[-] Fixed error in FindKey method for string fields.
+[-] Fixed error in Refresh method (cursor positioned at first record).
+[-] Fixed error in FlashBuffer method (cursor positioned at last record).
+[*] Table opening operations are optimized.
+
+
+Version 2.0.5 build 8156 (July 31, 2003)
+*******************************************
+
+[*] Tables opening is optimized.
+[*] Locate and Lookup methods slightly optimized.
+[-] Boolean type fields processing bug fixed.
+[-] Fixed fields of string type longer than 255 characters processing bug.
+    Occurs on SHOW CREATE TABLE query if CREATE TABLE SQL statement length > 255 characters.
+    Now is automatically converted to MEMO.
+[-] Fixed fields of TIMESTAMP type processing bug.
+
+
+
+Version 2.0.4 build 7755 (July 10, 2003)
+*******************************************
+
+[*] Corrected function creating WHERE statement on UPDATE operation. Now it searches
+    for Primary Key; if Primary Key doesn't exist, this function searches for Unique Key;
+    if Unique Key doesn't exist too, then WHERE statement with all table's fields will
+    be created.
+[-] Fixed bug which occured while CacheBlobs = True (AV out of application memory space).
+[-] Fixed bug in FindNearest function on handling index field with NULL value.
+[-] Fixed bug on inserting the first record in an empty table.
+[-] Fixed bug in server-client/client-server data autoconverting for KOI8 server codepage.
+
+
+
+
+Version 2.0.3 build 7536 (June 05, 2003)
+*******************************************
+
+[*] TMySQLDump component is rewritten.
+[-] Corrected Locate and Lookup methods while multifield based index processing;
+[-] Cursor positioning bug after Post operation (when primary key or Unique
+    Index is based on field of int(10) unsigned type) fixed.
+
+
+Version 2.0.2 build 7426 (May 29, 2003)
+*******************************************
+
+[+] fldUINT32, fdlDATE, fldTIME, and fldTIMESTAMP fields types added in FindNearest method;
+[-] FindNearest method bug fixed;
+[-] Fixed bug (AV) on connection to DB when Host property is equal to ''. Default value is set
+    to 'localhost'.
+[-] Upper case EOF conflicts with C++ bug fixed;
+[-] Fixed bug occurs while editing of MEMO fields in DBGrid, when MEMO is displayed in string mode;
+[-] Corrected and optimized Locate and Lookup methods;
+[-] Fixed bug occurs on execute TMySQLQuery component method Open when SQL contains command which
+    don't return a resultset (DELTE, INSERT, UPDATE ...). Standard behavior a'la BDE implemented.
+[-] Fixed bug on boolean fields processing (ENUM('N','Y'), ENUM('T','F')). True and Null values was set. 
+
+Version 2.0.1 build 7356 (May 15, 2003)
+*******************************************
+
+[!] Product name changed to DAC for MySQL(TM);
+[!] Let's say "Farewell!" to libmysql.dll. Now you can distribute your aplications
+    without this library. Thanks to TDirectSQLObjects and Cristian Nicola;
+[!] Internal implementation of BDE modules and DBTables types, variables, and constants added;
+[!] New component added: TMySQLMacroQuery. Now you can use macros in SQL queries.
+[!] New component added: TMySQLMonitor. Works like standard TSQLMonitor;
+[!] New component added: TBDE2MySQLDAC. Converts BDE-based projects to DAC for MySQL(TM);
+[!] New component added: TMySQLBatchExecute. Allows to execute SQL queries in batch;
+[!] New component added: TMySQLTools. Allows to execute MySQL commands with easy
+    (ANALYZE, REPAIR, CHECK ...);
+[!] New component added: TMySQLDump. Allows to make a dump of a database; 
+[+] Support for 64 bytes DB objects names added (was 32 bytes);
+[+] Support for wildcards in GetDatabases and GetTableNames methods of TMySQLDataBase component added;
+[+] TLargeInt field AUTOINCREMENT support added.
+[*] "Property Database is not set" error information is more detailed now.
+[*] Handling of TLargeInt type parameters in LocateRecord method corrected.
+[-] Support for Escape Sequences in fldZSTRING field in internal operation added.
+[-] Fixed bug when INSERT, UPDATE, and DELETE on tables containing fields of mediumint(4) type
+    with UNSIGNED attribute set on.
+[-] Fixed bug in TMySQLDatabase.Execute method. Accepts parameters and works with Cached = True
+    option correctly;
+[-] SET type fields processing bug fixed.
+[-] Support of Delphi 4 discontinued.
+
+Version 1.9.8 build 6122 (October 14, 2002)
+*******************************************
+
+[+] Delphi 7 support added.
+[+] IN and LIKE commands added to Filter.
+[+] GetLastinsertID function added.
+[+] AllowSequenced property added to TMySQLTable and TMySQLQuery components.
+[*] Data modification in Tables without PrimaryKey or UniqueIndex is blocked.
+[*] Internal function NextSQLToken rewritten.
+[-] Positioning error after table with non-unique index modification fixed.
+[-] DuplicateResource error fixed.
+[-] Fixed bug in LocateNearestRecord method.
+[-] Fixed bug while Select request processing which contains MySQL functions
+    with SQL keywords.
+[-] Bug in OEMConvert property fixed.
+[-] Error while using Bookmark fixed.
+[-] Port number run-time setting bug in BCB fixed.  
+
+
+Version 1.9.7 build 6012 (May 22, 2002)
+*******************************************
+
+[+] TMySQLUpdateSQL component Editor added.
+[+] CashedUpdates property added to allow TMySQLUpdateSQL works correctly.
+[+] OnUpdateError event added.
+[+] OnUpdateRecord event added.
+[-] CreateLookupFilter method error fixed.
+[-] Fixed bug while using complex indexes.
+
+
+Version 1.9.6 Build 5474 (April 11, 2002)
+*******************************************
+
+[-] Several minor bug-fixes
+
+
+Version 1.9.6 build 5430 March 28, 2002
+*******************************************
+
+[*] Corrected field and record sizes counting methods.
+[*] New implementation of GetDatabases method (thanks to Nicholas Ring).
+[-] Fixed bug in the internal function GetTable (thanks to Nicholas Ring).
+[-] Fixed error while Insert/Modification of BLOB fields (exceeded BLOB size error).
+
+
+Version 1.9.6 build 5427 (March 26, 2002)
+*******************************************
+
+[+] Added handler for timeout error while 'Select xx for Update' statement used.
+[*] InitEngine method modified, so now you can handle exceptions.
+[*] Cursor position after record deletion now will set to the next record or to
+    last record (like BDE does).
+[-] Fixed problem with PostKeyBuffer function (previous version caused problems
+    in FindNearest method).
+[-] Fixed cursor position problem while using Insert and Update methods with
+    KeyField was changed.
+[-] Fixed record size calculation error.
+
+
+Version 1.9.5 build 5046 (February 14, 2002)
+********************************************
+
+[-] Fixed automatically lowercase converting SQL statements problem (Did not 
+    work with Unix MySQL with uppercase named Tables).
+
+
+Version 1.9.5 build 5045 (February 6, 2002)
+********************************************
+
+[+] Added support for Int64 fields in FindKey and SetRange functions.
+[*] Some code optimization.
+[-] Fixed bug while using complex indexes.
+[-] Fixed problem with read-only result set while using TMySQLQuery.
+[-] Fixed problems with Enum fields represented as Boolean in TMySQLQuery.
+[-] Fixed HandleShared property bug.
+[-] Fixed memory-leak in Convert function.
+[-] Fixed bug while detecting BLOB fields size.
+[-] Fixed exception while changing table name without changing index.
+[-] Fixed GetTable function problem (Database.TableName in Query).
+
+
+Version 1.9.2 build 4142 (December 20, 2001)
+********************************************
+
+[+] Property TMySQLTable.Offset added to allow developers set starting 
+    row for Fetch operation.
+[*] Some code optimization. 
+[-] Fixed problem with tinyint unsigned field.
+[-] Fixed problem with findkey for tinyint field while using in index.
+[-] Fixed problem with Field names length over 32 bytes (Exception). 
+
+
+Version 1.9.1 build 4000 (November 27, 2001)
+********************************************
+
+[*] Some code optimization. 
+[-] Fixed CheckRange exception problem.
+[-] Fixed processing enum fields problem.
+
+
+Version 1.9 build 3395 (November 15, 2001)
+********************************************
+
+[*] Some minor changes.
+[-] Fixed RecNo property problem.
+[-] Fixed Memory Leak problem on TMySQLQuery.ExecSQL method.
+
+
+Version 1.8 build 3200 (November 1, 2001)
+********************************************
+
+[+] Added support for sort order for Index.
+[+] Added ability to use BlobField as Param for Query.
+[*] Some code optimization.
+[-] Fixed KeepConnection property problem.
+
+
+Version 1.7.5 build 3004 (October 18, 2001)
+********************************************
+
+[+] Added support for FindFirst, FindLast, FindNext and FindPrev methods.
+[*] Optimized Locate, Lookup methods.
+[*] Some code optimization.
+[-] Fixed BatchModify property problem.
+[-] Fixed problem with BlobSize method
+
+
+Version 1.7 build 2644 (October 03, 2001)
+********************************************
+
+[+] Added BatchModify public property for speed increasing while
+[+] Batch Insert and Update operations (see Help file for details). 
+[-] Fixed FindKey method problem.
+[-] Fixed FindNearest method problem.
+[-] Fixed Lookup method problem.
+[-] Fixed problem with Query which containts "join" statement ("Syntax
+    error..." message).
+
+
+Version 1.6.1 build 2231 (September 05, 2001)
+*********************************************
+
+[-] Fixed problem with ExecSQL method with params, which includes
+    strings (escape conversion).
+[-] Fixed problem with Edit and Post methods on Query with "Where" Clause.
+[-] Fixed problem with TMySQLQuery Locate method.
+
+
+Version 1.6 build 2146 (August 27, 2001)
+****************************************
+
+[+] MySQLExplorer expert by Jose Leon Serna added as a bonus.
+[+] TDBImageEx component added as a bonus (Supports JPEG format)
+[+] Added help file in hlp format.
+[+] Added function FindNearest.
+[*] Function Locate optimized.
+[-] Fixed problem with OnFilterRecord. New release of TMySQLFilter object.
+[-] Fixed problem with function GetRecordForKey.
+[-] Fixed problem with function SetToKey.
+[-] Fixed problem with InsertRecord, ModifyRecord, DeleteRecord functions.
+
+
+Version 1.5.2 build 1607 (July 31, 2001)
+****************************************
+
+[+] Added new help file.  
+[*] Some changes in LoginPrompt Dialog.
+[*] Some code optimization for C++Builder compatibility.
+[-] Fixed problem and increased (almost 14-15 times) speed for FindKey function.
+[-] Fixed problem with FindNearest function (still todo: increase speed).
+
+
+Version 1.5.1 build 1402 (July 24, 2001)
+****************************************
+
+[+] Added function LockTable.
+[+] Added function UnLockTable.
+[*] Some code optimization for C++Builder compability.
+[-] Fixed InTransaction property problem.
+[-] Fixed Blob size calculation problem.
+
+
+Version 1.5 build 1347 (July 17, 2001)
+**************************************
+
+[+] Support for Delphi 6 added. 
+[*] Some code optimization for compability with C++Builder.
+[-] Fixed problem with:
+    TMySQLTable(TMySQLQuery).FieldByName('FieldName')(Fields[x]).AsString := ''.
+[-] Fixed problem with:
+    TMySQLTable(TMySQLQuery).FieldByName('FieldName')(Fields[x]).Clear.
+[-] Fixed problem with string fields contains special symbols.
+[-] Property Limit for TMySQLTable added. Limits quantity of records
+    fetched from table.
+[-] Fixed problem with string fields size counting.
+[-] Fixed problem with FindKey function for integer fields with
+    auto_increment flag.
+[-] Fixed problem with commands sequence (insert post modify post)
+    "invalid pointer operation".
+
+
+Version 1.4 build 1094 (June 27, 2001)
+**************************************
+
+[+] Increased (twice) speed of opening tables with indexes.
+[+] Increased (almost 150-200 times - depends of Table structure)
+    performance of Mater-Detail operations.
+[*] Some code optimization.
+[-] Fixed problem with TMySQLQuery crash after multiply calls.
+[-] Fixed Stack Overlow after calling Locate method in Edit state bug.
+
+
+Version 1.3.3 build 703 (June 21, 2001)
+***************************************
+
+[*] Code modification for C++Builder compatibility.
+[-] Fixed problem with TMySQLQuery with Params.
+
+
+Version 1.3.2 build 657 (June 18, 2001)
+***************************************
+
+[*] Some code optimization. 
+[-] Fixed problem with LoginPrompt property.
+[-] Fixed problem with RowsAffected property.
+[-] Fixed problem with internal reading of fields which have length
+    of value equal maximal length of field "Invalid pointer operation".
+
+
+Version 1.3.1 build 631 (June 09, 2001)
+***************************************
+
+[*] Algorithm for working with INDEX and PRIMARY KEY is changed.
+[*] Some code optimization.
+[-] Fixed problem with TMySQLUpdateSQL.
+[-] Fixed problem with TMySQLTable for table without PRIMARY KEY
+    "Invalid pointer operation".
+
+
+Version 1.3 (May 31, 2001)
+**************************
+
+[+] Property TMySQLDatabase.Params added. 
+[+] ComponentEditor for TMySQLDatabase component added. 
+[+] Procedure TMySQLTable.CreateTable added. 
+[+] Procedure TMySQLTable.EmptyTable added. 
+[+] Procedure TMySQLTable.AddIndex added. 
+[+] Procedure TMySQLTable.DeleteIndex added. 
+[-] Fixed problem with property TMySQLTable.Exists. 
+[-] Fixed problem with MySQL flag UNSIGNED. 
+
+
+Version 1.2 (May 21, 2001)
+**************************
+
+[+] Support for C++Builder 5 added. 
+[+] Help file (.chm) alfa version added. 
+[*] Some code optimization. 
+[-] Fixed problem with Character Convert. 
+[-] Fixed problem with Component initalization order and
+    "Invalid TypeCast Error". 
+[-] Fixed problem with function TStreamBlob.Write. 
+
+
+Version 1.1 (May 03, 2001)
+**************************
+
+[-] Fixed bug in TMySQLTable while opening table without indexes. 
+[-] Fixed problem while switching between indexes in TMySQLTable. 
+[-] Fixed "Invalid Pointer Operation" error while Character Set conversion. 
+
+
+Version 1.1 (April 27, 2001)
+****************************
+
+[-] Integer type convertion problem fixed. 
+
+
+Version 1.1 (April 26, 2001)
+****************************
+
+[-] Problem with records deleting fixed. 
+[-] Insert of second record in empty Dataset problem fixed. 
+[-] Fixed bug while closing and freeing TMySQLDataSet 
+
+
+Version 1.1 (April 25, 2001)
+****************************
+
+[-] Insert, Update and Delete fields containing
+    " ' " (apostroph, x027) problem fixed. 
+[-] Login prompt is TRUE and UserName and UserPassword is EMPTY
+    (Login dialog did not appear) fixed. 
+[-] ExecSQL function problem (Property SQL error in string <STRING number>)
+    fixed. 
+
+
+Version 1.0.2 (April 24, 2001)
+******************************
+
+[-] Fixed problem with empty dataset opening. 
+[-] Fixed problem with Open/Close TMySQLDatabase. 
+
+
+Version 1.0.1 (April 13, 2001)
+******************************
+
+[-] Fixed problem with TDateTime fields. 
+[-] Fixed problem with insert, update, delete for TDateTime Fields. 
+
+Version 1.0 April 05, 2001   
+**************************
+
+[+] Support of all charsets which MySQL supports added. 
+[+] TMySQLTable component added. 
+
+
+Version 1.0 (March 12, 2001)
+****************************
+
+First public release of MySQLDAC, version 0.9. 
+
+
+
+
+
+
+</PRE></BODY></HTML>

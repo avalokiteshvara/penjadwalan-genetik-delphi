@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="Author" content="Kambiz R. Khojasteh" />
+<style type="text/css">
+<!--
+body, td, th {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 10pt;
+}
+a {
+	text-decoration: none;
+	color: #800000;
+}
+a:hover {
+	border-bottom: 1px solid #ff0000;
+}
+.header {
+	color: #ffffff;
+	background-color: #660000;
+	font-size: 24pt;
+	font-weight: bold;
+	padding: 0.5em 0;
+	text-align: center;
+}
+.tags {
+	margin: 0;
+	padding: 0;
+	height: 2em;
+}
+.tags li {
+	color: #ffffff;
+	background-color: #330000;
+	margin: 2px 4px 2px 0;
+	float: left;
+	font-weight: bold;
+	display: block;
+	padding: 0.25em 1em;
+	white-space: nowrap;
+	text-align: center;
+}
+.note {
+	color: #ff0000;
+}
+h3 {
+	clear: both;
+	margin: 1.5em 0 0;
+	padding-bottom: 0.25em;
+	border-bottom: 1px solid #eeeeee;
+}
+li {
+	margin-bottom: 1em;
+}
+sup {
+	font-size: 0.8em;
+}
+-->
+</style>
+<title>ReadMe</title>
+</head>
+<body>
+<div class="header">TBackgroundWorker v1.1</div>
+<p>Copyright &copy; <a href="mailto:kambiz@delphiarea.com">Kambiz R. Khojasteh</a>. All rights reserved.<br />
+Get future component updates from <a href="http://www.delphiarea.com">http://www.delphiarea.com</a>.</p>
+<ul class="tags"> 
+  <li>Delphi 3</li>
+  <li>Delphi 4</li>
+  <li>Delphi 5</li>
+  <li>Delphi 6</li>
+  <li>Delphi 7</li>
+  <li>Delphi 2005</li>
+  <li>Delphi 2006</li>
+  <li>Delphi 2007</li>
+  <li>Delphi 2009</li>
+  <li>Delphi 2010</li>
+</ul>
+<h3 id="description">DESCRIPTION</h3>
+  <p>The TBackgroundWorker component allows you to run an operation on a separate, dedicated thread. Time-consuming operations like downloads and database transactions can cause your user interface (UI) to seem as though it has stopped responding while they are running. When you want a responsive UI and you are faced with long delays associated with such operations, the TBackgroundWorker component provides a convenient solution.</p>
+  <p>To execute a time-consuming operation in the background, create a TBackgroundWorker component and listen for events that report the progress of your operation and signal when your operation is finished. You can create the TBackgroundWorker component programmatically or you can drag it onto your form from the Components palette.</p>
+  <p>To set up for a background operation, add an event handler for the <a href="#OnWork">OnWork</a> event. Call your time-consuming operation in this event handler. To start the operation, call <a href="#Execute">Execute</a> method. To receive notifications of progress updates, handle the <a href="#OnWorkProgress">OnWorkProgress</a> event. To receive feedbacks from the operation in background, handle <a href="#OnWorkFeedback">OnWorkFeedback</a> event. To receive a notification when the operation is completed, handle the <a href="#OnWorkComplete">OnWorkComplete</a> event.</p>
+<h3 id="properties">PROPERTIES</h3>
+<ul>
+  <li><strong id="CancellationPending">CancellationPending: Boolean</strong> <sup>(Read-only)</sup><br />Indicating whether the application has requested cancellation of the background operation.<br />This property is true when <a href="#Cancel">Cancel</a> method is called but the background operation has not accepted it yet.</li>
+  <li><strong id="IsCancelled">IsCancelled: Boolean</strong> <sup>(Read-only)</sup><br />Indicates whether the last background operation was cancelled.</li>
+  <li><strong id="IsWorking">IsWorking: Boolean</strong> <sup>(Read-only)</sup><br />Indicates whether the component is running a background operation.</li>
+  <li><strong id="ThreadID">ThreadID: Boolean</strong> <sup>(Read-only)</sup><br />Identifies the worker thread throughout the system. When the component is not running a background operation, this property is zero.<br />You can use this property for debugging purposes or when calling Win32 API functions for manipulating the thread.</li>
+</ul>
+<h3 id="methods">METHODS</h3>
+<ul>
+  <li><strong id="Execute">procedure Execute</strong><br />Starts execution of a background operation.</li>
+  <li><strong id="Cancel">procedure Cencel</strong><br />Requests cancellation of the background operation.</li>
+  <li><strong id="WaitFor">procedure WaitFor</strong><br />Waits for the background operation to terminate.</li>
+  <li><strong id="ReportProgress">procedure ReportProgress(PercentDone: Integer)</strong><br /><span class="note">This procedure can be called only inside the <a href="#OnWork">OnWork</a> event handler.</span><br />Raises the <a href="#OnWorkProgress">OnWorkProgress</a> event sometime later in the main VCL thread, but the current thread does not wait for the event to occur.<br />The background operation can use this procedure to report its current progress to the main thread.</li>
+  <li><strong id="ReportProgressWait">procedure ReportProgressWait(PercentDone: Integer)</strong><br /><span class="note">This procedure can be called only inside the <a href="#OnWork">OnWork</a> event handler.</span><br />Raises the <a href="#OnWorkProgress">OnWorkProgress</a> event in the main VCL thread, and waits for the event to occur.<br />The background operation can use this procedure to report its current progress to the main thread.</li>
+  <li><strong id="ReportFeedback">procedure ReportFeedback(FeedbackID, FeedbackValue: Integer)</strong><br /><span class="note">This procedure can be called only inside the <a href="#OnWork">OnWork</a> event handler.</span><br />Raises the <a href="#OnWorkFeedback">OnWorkFeedback</a> event sometime later in the main VCL thread, but the current thread does not wait for the event to occur.<br />The background operation can use this procedure to send feedbacks to the main thread.</li>
+  <li><strong id="ReportFeedbackWait">procedure ReportFeedbackWait(FeedbackID, FeedbackValue: Integer)</strong><br /><span class="note">This procedure can be called only inside the <a href="#OnWork">OnWork</a> event handler.</span><br />Raises the <a href="#OnWorkFeedback">OnWorkFeedback</a> event in the main VCL thread, and waits for the event to occur.<br />The background operation can use this procedure to send feedbacks to the main thread.</li>
+  <li><strong id="Synchronize">procedure Synchronize(Method: TThreadMethod)</strong><br /><span class="note">This procedure can be called only inside the <a href="#OnWork">OnWork</a> event handler.</span><br />Calls a method in the main VCL thread and waits until the method returns.</li>
+  <li><strong id="AcceptCancellation">procedure AcceptCancellation</strong><br /><span class="note">This procedure can be called only inside the <a href="#OnWork">OnWork</a> event handler.</span><br />Causes a pending cancellation request be accepted and <a href="#IsCancelled">IsCancelled</a> property set to true.<br />Your background operation should check <a href="#PendingCancellation">PendingCancellation</a> periodically and when it is true, call <a href="#AcceptCancellation">AcceptCancellation</a> and exit.</li>
+</ul>
+<h3 id="events">EVENTS</h3>
+<ul>
+  <li><strong id="OnWork">OnWork: TWorkEvent<br />procedure(Worker: TBackgroundWorker) of object</strong><br />Occurs when <a href="#Execute">Execute</a> method is called. This is where you start the operation that performs the potentially time-consuming work.
+      <p>Your code in the <a href="#OnWork">OnWork</a> event handler should periodically check the <a href="#CancellationPending">CancellationPending</a> property value and abort the operation if it is true. When this occurs, you can call <a href="#AcceptCancellation">AcceptCancellation</a> method, and the <a href="#IsCancelled">IsCancelled</a> property will be set to true.</p>
+      <p>You must be careful not to manipulate any user-interface objects in your <a href="#OnWork">OnWork</a> event handler. Instead, communicate to the user interface through the provided events.</p>
+  </li>
+  <li><strong id="OnWorkComplete">OnWorkComplete: TWorkCompleteEvent<br />procedure(Worker: TBackgroundWorker; Cancelled: Boolean) of object</strong><br />Ocurs when background operation has been completed or has been cancelled.
+      <p>The <em>Cancelled</em> parameter indicates whether a cancellation request was processed by the background operation. If your code in the <a href="#OnWork">OnWork</a> event handler detects a cancellation request by checking the <a href="#CancellationPending">CancellationPending</a> property value and calling the <a href="#AccceptCancellation">AccceptCancellation</a> method, the <em>Cancelled</em> parameter will be true.</p>
+      <p>Be aware that your code in the <a href="#OnWork">OnWork</a> event handler may finish its work as a cancellation request is being made, and your polling loop may miss <a href="#CancellationPending">CancellationPending</a> being set to true. In this case, the <em>Cancelled</em> parameter will not be true, even though a cancellation request was made. This situation is called a race condition and is a common concern in multithreaded programming.</p>
+  </li>
+  <li><strong id="OnWorkProgress">OnWorkProgress: TWorkProgressEvent<br />procedure(Worker: TBackgroundWorker; PercentDone: Integer) of object</strong><br />Occurs when the background operation reports its work progress to the main thread.</li>
+  <li><strong id="OnWorkFeedback">OnWorkFeedback: TWorkFeedbackEvent<br />procedure(Worker: TBackgroundWorker; FeedbackID, FeedbackValue: Integer) of object</strong><br />Occurs when the background operation sends feedback to the main thread.</li>
+</ul>
+<h3 id="history">HISTORY</h3>
+<ul>
+  <li><strong>Version 1.1 (December 6, 2008)</strong><br />- Added <a href="#ReportProgressWait">ReportProgressWait</a>, <a href="#ReportFeedbackWait">ReportFeedbackWait</a>, and <a href="#Synchronize">Synchronize</a> methods.</li>
+  <li><strong>Version 1.0 (November 19, 2008)</strong><br />- Initial release.</li>
+</ul>
+<h3 id="license">LICENSE</h3>
+  <p>The TBackgroundWorker component is freeware. You may copy components' files AS LONG AS YOU COPY ALL OF THEM. If you want to change the source code in order to improve the component's features, performance, etc. please send me the new source code so that I can have a look at it. The changed source code should contain descriptions what you have changed, and of course your name. The only thing you MAY NOT CHANGE is the ORIGINAL COPYRIGHT INFORMATION.</p>
+<h3 id="disclaimer">DISCLAIMER</h3>
+  <p>The TBackgroundWorker component is provided &quot;AS IS&quot; without any warranty of any kind, either express or implied. The entire risk as to the quality and performance of the software is with you. The author is NOT liable for any DAMAGES resulting from the use and misuse of the components, especially he is NOT liable for DAMAGES that were caused BY ANY VERSION WHICH HAS NOT BEEN PROGRAMMED BY THE AUTHOR HIMSELF.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="100%"><hr noshade="noshade" /></td>
+    <td nowrap="nowrap">&nbsp;<sup style="font-size: 6pt;">END OF DOCUMENT</sup></td>
+  </tr>
+</table>
+</body>
+</html>

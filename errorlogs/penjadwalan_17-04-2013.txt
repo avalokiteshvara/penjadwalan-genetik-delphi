@@ -1,0 +1,116 @@
+$Tanggal Error  : 17-04-2013 8:53:56 AM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sss'')' at line 1
+$Pesan          :
+$SQL Text       :
+SELECT CAST(COUNT(*) AS CHAR(1)) FROM dosen WHERE (kode=1 OR nidn=''sss'')
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 17-04-2013 10:55:29 AM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Anam, S.Kom., H. MM) AND kode <> 5' at line 1
+$Pesan          :
+$SQL Text       :
+SELECT CAST(COUNT(*) AS CHAR(1)) FROM dosen WHERE (kode=5 OR nidn=Chairul Anam, S.Kom., H. MM) AND kode <> 5
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 17-04-2013 10:56:20 AM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Retno Ires D, S.St'') AND kode <> 0' at line 1
+$Pesan          :
+$SQL Text       :
+SELECT CAST(COUNT(*) AS CHAR(1)) FROM dosen WHERE (kode=0 OR nidn=''Retno Ires D, S.St'') AND kode <> 0
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 17-04-2013 10:56:57 AM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Listiwikono, Drs. MM,
+    alamat = ,
+    telp =  
+WHERE kode 
+$Pesan          :
+$SQL Text       :
+UPDATE dosen 
+SET kode = 1,
+    nidn = 123,
+    nama = Eko Listiwikono, Drs. MM,
+    alamat = ,
+    telp =  
+WHERE kode = 1
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 17-04-2013 2:54:39 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2011/2012''
+ORDER BY b.nama,a.kelas' at line 13
+$Pesan          :
+$SQL Text       :
+SELECT a.kode as Kode,
+       b.kode as `Kode MK`, 
+       b.nama as `Nama MK`,
+       c.kode as `Kode Dosen`,
+       c.nama as  `Nama Dosen`,
+       a.kelas as Kelas,
+       a.tahun_akademik as `Tahun Akademik` 
+FROM pengampu a 
+LEFT JOIN mata_kuliah b 
+ON a.kode_mk = b.kode 
+LEFT JOIN dosen c 
+ON a.kode_dosen = c.kode 
+WHERE b.semester%2=1      AND a.tahun_akademik = ''2011/2012''
+ORDER BY b.nama,a.kelas
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 17-04-2013 4:17:48 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''' at line 6
+$Pesan          :
+$SQL Text       :
+UPDATE pengampu 
+SET kode_mk = 33,
+    kode_dosen = 21,
+    kelas = 'P1',
+    tahun_akademik = '2011/2012' 
+WHERE kode = 94'
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 17-04-2013 9:30:03 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'True''
+ORDER BY kode' at line 3
+$Pesan          :
+$SQL Text       :
+SELECT nama,kode 
+FROM hari 
+WHERE aktif = ''True''
+ORDER BY kode
+
+ 
+******************************************************************
+ 

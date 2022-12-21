@@ -1,0 +1,99 @@
+$Tanggal Error  : 15-04-2013 8:24:08 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL,kode_hari,kode_jam) FROM waktu_tidak_bersedia)' at line 1
+$Pesan          :
+$SQL Text       :
+SELECT kode_dosen,CONCAT_WS('':'',kode_hari,kode_jam) FROM waktu_tidak_bersedia) 
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 8:25:18 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL,kode_hari,kode_jam) FROM waktu_tidak_bersedia' at line 1
+$Pesan          :
+$SQL Text       :
+SELECT kode_dosen,CONCAT_WS('':'',kode_hari,kode_jam) FROM waktu_tidak_bersedia 
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 9:23:27 PM
+$Error Class    : EAccessViolation
+$Error Message  : 
+Access violation at address 004054A6 in module 'penjadwalan.exe'. Read of address 0000000E
+$Pesan          :ERROR
+$SQL Text       :
+ERROR
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 9:32:07 PM
+$Error Class    : EConvertError
+$Error Message  : 
+Format '%d' invalid or incompatible with argument
+$Pesan          :ERROR
+$SQL Text       :
+ERROR
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 9:36:08 PM
+$Error Class    : EConvertError
+$Error Message  : 
+Format '%d' invalid or incompatible with argument
+$Pesan          :ERROR
+$SQL Text       :
+ERROR
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 9:45:31 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('', g.kode),		                       concat((SELECT kode 						
+$Pesan          :
+$SQL Text       :
+SELECT  e.nama as Hari,        Concat_WS(''-'',  concat(''('', g.kode),		                       concat((SELECT kode 								                   FROM jam 										               WHERE kode = (SELECT jm.kode 										                             FROM jam jm 															                   WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1)),'')'')) as SESI,        Concat_WS(''-'', MID(g.range_jam,1,5),                        (SELECT MID(range_jam,7,5)                          FROM jam                          WHERE kode = (SELECT jm.kode                                        FROM jam jm                                        WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as Jam_Kuliah,         c.nama as `Nama MK`,         c.sks as SKS,         c.semester as Smstr,         b.kelas as Kelas,         d.nama as Dosen,         f.nama as Ruang FROM jadwal_kuliah a LEFT JOIN pengampu b ON a.kode_pengampu = b.kode LEFT JOIN mata_kuliah c ON b.kode_mk = c.kode LEFT JOIN dosen d ON b.kode_dosen = d.kode LEFT JOIN hari e ON a.kode_hari = e.kode LEFT JOIN ruang f ON a.kode_ruang = f.kode LEFT JOIN jam g ON a.kode_jam = g.kode order by e.nama desc,Jam_Kuliah asc;
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 9:50:41 PM
+$Error Class    : 
+$Error Message  : 
+
+$Pesan          :
+$SQL Text       :
+SELECT  e.nama as Hari,        Concat_WS('-',  concat('(', g.kode),		                       concat((SELECT kode 								                   FROM jam 										               WHERE kode = (SELECT jm.kode 										                             FROM jam jm 															                   WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1)),')')) as SESI,        Concat_WS('-', MID(g.range_jam,1,5),                        (SELECT MID(range_jam,7,5)                          FROM jam                          WHERE kode = (SELECT jm.kode                                        FROM jam jm                                        WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as Jam_Kuliah,         c.nama as `Nama MK`,         c.sks as SKS,         c.semester as Smstr,         b.kelas as Kelas,         d.nama as Dosen,         f.nama as Ruang FROM jadwal_kuliah a LEFT JOIN pengampu b ON a.kode_pengampu = b.kode LEFT JOIN mata_kuliah c ON b.kode_mk = c.kode LEFT JOIN dosen d ON b.kode_dosen = d.kode LEFT JOIN hari e ON a.kode_hari = e.kode LEFT JOIN ruang f ON a.kode_ruang = f.kode LEFT JOIN jam g ON a.kode_jam = g.kode order by e.nama desc,Jam_Kuliah asc;
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 9:52:35 PM
+$Error Class    : EmySQLDatabaseError
+$Error Message  : 
+mySQL Error Code: (1064)
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('', g.kode),		                       concat((SELECT kode 						
+$Pesan          :
+$SQL Text       :
+SELECT  e.nama as Hari,        Concat_WS(''-'',  concat(''('', g.kode),		                       concat((SELECT kode 								                   FROM jam 										               WHERE kode = (SELECT jm.kode 										                             FROM jam jm 															                   WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1)),'')'')) as SESI,        Concat_WS(''-'', MID(g.range_jam,1,5),                        (SELECT MID(range_jam,7,5)                          FROM jam                          WHERE kode = (SELECT jm.kode                                        FROM jam jm                                        WHERE MID(jm.range_jam,1,5) = MID(g.range_jam,1,5)) + (c.sks - 1))) as Jam_Kuliah,         c.nama as `Nama MK`,         c.sks as SKS,         c.semester as Smstr,         b.kelas as Kelas,         d.nama as Dosen,         f.nama as Ruang FROM jadwal_kuliah a LEFT JOIN pengampu b ON a.kode_pengampu = b.kode LEFT JOIN mata_kuliah c ON b.kode_mk = c.kode LEFT JOIN dosen d ON b.kode_dosen = d.kode LEFT JOIN hari e ON a.kode_hari = e.kode LEFT JOIN ruang f ON a.kode_ruang = f.kode LEFT JOIN jam g ON a.kode_jam = g.kode order by e.nama desc,Jam_Kuliah asc;
+
+ 
+******************************************************************
+ 
+$Tanggal Error  : 15-04-2013 10:50:33 PM
+$Error Class    : EInvalidPointer
+$Error Message  : 
+Invalid pointer operation
+$Pesan          :
+$SQL Text       :
+SELECT kode FROM ruang WHERE jenis ='LABORATORIUM'
+
+ 
+******************************************************************
+ 

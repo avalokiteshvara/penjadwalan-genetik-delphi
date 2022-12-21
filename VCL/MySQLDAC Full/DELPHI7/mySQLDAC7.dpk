@@ -1,0 +1,61 @@
+package mySQLDAC7;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Direct Access Components for MySQL'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  vcldb,
+  dcldb,
+  bdertl,
+  rtl;
+
+contains
+  mySQLTypes in 'mySQLTypes.pas',
+  mySQLAccess in 'mySQLAccess.pas',
+  mySQLCOMP in 'mySQLCOMP.pas',
+  mySQLDbTables in 'mySQLDBTables.pas',
+  mysqlAboutFrm in 'mysqlAboutFrm.pas' {MySQLAboutComp},
+  mySQLfldlinks in 'mySQLfldlinks.pas' {LinkFields},
+  mySQLCP in 'mySQLCP.pas',
+  mySQLConnFrm in 'mySQLConnFrm.pas' {ConnForm},
+  MySQLupdsqled in 'MySQLupdsqled.pas' {MySQLUpdateSQLEditForm},
+  uMyDMCT in 'uMyDMCT.pas',
+  uMyDMClient in 'uMyDMClient.pas',
+  uMyDMErrors in 'uMyDMErrors.pas',
+  uMyDMHelpers in 'uMyDMHelpers.pas',
+  uMyDMNet in 'uMyDMNet.pas',
+  uMyDMSSL in 'uMyDMSSL.pas',
+  uMyDMVio in 'uMyDMVio.pas',
+  MySQLBatch in 'MySQLBatch.pas',
+  MySQLMacroQuery in 'MySQLMacroQuery.pas',
+  MySQLMigrator in 'MySQLMigrator.pas',
+  MySQLMonitor in 'MySQLMonitor.pas',
+  MySQLTools in 'MySQLTools.pas',
+  MySQLDump in 'MySQLDump.pas',
+  uMyDMNewPassword in 'uMyDMNewPassword.pas',
+  uMyDMsha1 in 'uMyDMsha1.pas';
+
+end.
